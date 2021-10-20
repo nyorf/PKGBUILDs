@@ -11,7 +11,7 @@ makedepends=()
 source=("https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-mirrorlist/mikoshi-mirrorlist")
 
 package() {
-	install -Dm 644 "$srcdir/mikoshi-mirrorlist" "$pkgdir/etc/pacman.d/mirrorlist"
+	install -Dm 644 "$srcdir/mikoshi-mirrorlist" "$pkgdir/etc/pacman.d/mikoshi-mirrorlist"
 }
 
 md5sums=("3f85b714cbb0d2c866df92766be0e49d")
