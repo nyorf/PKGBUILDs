@@ -1,0 +1,28 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=mikoshi-keyring
+pkgver=2021.10.20
+pkgrel=1
+pkgdesc="PGP keyring for the maintainers of Mikoshi Project"
+arch=("x86_64")
+license=("MIT")
+depends=("pacman")
+makedepends=()
+source=("https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-keyring/mikoshi.gpg"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-keyring/mikoshi-trusted"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-keyring/mikoshi-revoked")
+
+package() {
+	install -Dm 644 "$srcdir/mikoshi.gpg" "$pkgdir/usr/share/pacman/keyrings/mikoshi.gpg"
+	install -Dm 644 "$srcdir/mikoshi-trusted" "$pkgdir/usr/share/pacman/keyrings/mikoshi-trusted"
+	install -Dm 644 "$srcdir/mikoshi-revoked" "$pkgdir/usr/share/pacman/keyrings/mikoshi-revoked"
+}
+
+md5sums=("3c8c019c48366a72093d9fbe7db4a917"
+         "3d1e853b567b334ac05ae0d074b2c548"
+         "d784fa8b6d98d27699781bd9a7cf19f0")
+sha256sums=("7766674c87f9d11a74177849e581ab88180a8a2691501077e97c663c52abeb31"
+            "e1a8668c3a2171ab2996098aea75ef375caca191dd18948a50c230b4a88103be"
+            "e16f1596201850fd4a63680b27f603cb64e67176159be3d8ed78a4403fdb1700")
+sha512sums=("435039a189b0f3c673ed10f23cacff91cd7e9f1a7cdcb6c6be1951a6666bd51f3ef4f3f0a1b94019c359fa34c373f230236f04700c4b8d313121dfce8806fe54"
+            "f5ab681dc0b6606fe0bde9c6c03c02fb423a78aeecc7831dc35952b8443f7eb1cc9d00b57bed0b4113a0f0447972048725c01f5393bcd32b4685717dba4610a5"
+            "f8aca02e28996a586f535eed5de9f4533b8b2910762f524459f6fae6fb3f8f7540db5f2c809c1c07167a95b33f6f3f85589af99182e2d2bf93f964de169dd4c0")
