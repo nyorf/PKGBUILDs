@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
 arch=("x86_64")
 license=("(L)GPL2")
+groups=("mikoshi-information-gathering" "mikoshi-dns-analysis")
 depends=("python" "python-netaddr" "python-dnspython" "python-lxml")
 makedepends=("curl")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darkoperator/dnsrecon/archive/$pkgver.tar.gz")

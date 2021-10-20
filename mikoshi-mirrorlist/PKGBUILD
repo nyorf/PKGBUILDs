@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="A list of mirrors for mikoshi-cybersecurity repository"
 arch=("x86_64")
 license=("MIT")
+groups=("mikoshi-core")
 depends=("pacman")
 makedepends=()
 source=("https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-mirrorlist/mikoshi-mirrorlist")
