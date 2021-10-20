@@ -1,0 +1,24 @@
+
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=dnsrecon
+pkgver=0.10.1
+pkgrel=1
+pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
+arch=(any)
+license=('(L)GPL2')
+depends=('python' 'python-netaddr' 'python-dnspython' 'python-lxml')
+conflicts=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/darkoperator/dnsrecon/archive/$pkgver.tar.gz")
+
+package() {
+    tar -xf "$pkgname-$pkgver.tar.gz"
+	install -Dm 755 "$srcdir/$pkgname-$pkgver/bin/dnsrecon" "$pkgdir/usr/bin/dnsrecon"
+	install -d "$pkgdir/usr/share/dnsrecon"
+	cp -r "$srcdir/$pkgname-$pkgver/." "$pkgdir/usr/share/dnsrecon"
+	install -D "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+md5sums=('7b48d3ba769e0f77682ada72baff8519')
+sha256sums=('eb0086f068a279bd2d6c9b9736d12ff1ef84f61561a06b1c134cb3bfa5c66920')
+sha512sums=('ed25fedd9f2c7adf5d1091bbf8060cdb0d0f74ef26134ffe7a482459bbab7dcb0b2c2da631bddf7f9ef9ec7d08d44c91fba531ba5fa0c4bf3567bbb02348ec5f')
