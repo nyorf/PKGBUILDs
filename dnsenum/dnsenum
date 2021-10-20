@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/dnsrecon
+exec python3 dnsrecon.py "$@"
