@@ -1,0 +1,17 @@
+######################################################
+####                                              ####
+###        Mikoshi-CS Repository Mirrorlist        ###
+####                                              ####
+######################################################
+#### Entry in file /etc/pacman.conf:
+###     [mikoshi-cybersecurity]
+###     SigLevel = Required DatabaseOptional
+###     Include = /etc/pacman.d/mikoshi-mirrorlist
+######################################################
+### You can choose whatever you like more: Github
+###     or Gitlab, both of those sources are even
+######################################################
+
+## Worldwide
+Server = https://gitlab.com/mikoshi/$repo/-/raw/master/$arch
+Server = https://raw.githubusercontent.com/nyorf/$repo/master/$arch

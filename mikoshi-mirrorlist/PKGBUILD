@@ -1,0 +1,18 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=mikoshi-mirrorlist
+pkgver=2021.10.20
+pkgrel=1
+pkgdesc="A list of mirrors for mikoshi-cybersecurity repository"
+arch=("x86_64")
+license=("MIT")
+depends=("pacman")
+makedepends=()
+source=("https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-mirrorlist/mikoshi-mirrorlist")
+
+package() {
+	install -Dm 644 "$srcdir/mikoshi-mirrorlist" "$pkgdir/etc/pacman.d/mirrorlist"
+}
+
+md5sums=("3f85b714cbb0d2c866df92766be0e49d")
+sha256sums=("426e5799bfb6a0ebed2b94fbc60c78f4223828a124ff24b40272ba5fad985a4a")
+sha512sums=("86d6914d9755ca2835634e98d5298e71086dea2b95978b8e58285d9d4a54c409c383ce98379df51802b612da24cf60610603e38d725fc65acb5d6ed880f82bda")
