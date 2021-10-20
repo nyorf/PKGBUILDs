@@ -7,12 +7,13 @@ pkgdesc="Python script for enumeration of hosts, subdomains and emails from a gi
 arch=(any)
 license=('(L)GPL2')
 depends=('python' 'python-netaddr' 'python-dnspython' 'python-lxml')
-conflicts=()
+makedepends=('curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darkoperator/dnsrecon/archive/$pkgver.tar.gz")
 
 package() {
     tar -xf "$pkgname-$pkgver.tar.gz"
-	install -Dm 755 "$srcdir/$pkgname-$pkgver/bin/dnsrecon" "$pkgdir/usr/bin/dnsrecon"
+    curl -O "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/dnsrecon/dnsrecon"
+	install -Dm 755 "$srcdir/dnsrecon" "$pkgdir/usr/bin/dnsrecon"
 	install -d "$pkgdir/usr/share/dnsrecon"
 	cp -r "$srcdir/$pkgname-$pkgver/." "$pkgdir/usr/share/dnsrecon"
 	install -D "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
