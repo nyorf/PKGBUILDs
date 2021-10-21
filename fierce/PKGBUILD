@@ -1,0 +1,26 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=fierce
+pkgver=1.4.0
+pkgrel=1
+pkgdesc="A semi-lightweight scanner that helps locate non-contiguous IP space and hostnames against specified domains."
+arch=("x86_64")
+license=("GPL3")
+groups=("mikoshi" "mikoshi-information-gathering" "mikoshi-dns-analysis")
+depends=("python" "python-dnspython")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mschwager/fierce/archive/refs/tags/$pkgver.tar.gz"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname")
+md5sums=("669efd68853d30185fc469c173d7bc03"
+         "879f04c490345ca57efd8a4f27b9e476")
+sha256sums=("6ff85428e06aa71fb4b52de4eef3cf1b6ebcb0f43cf1fcf0150f5e8dcb67b9d1"
+            "a4d0551cf9090716dc28d36ebd66d0bd57da0bb6ae6d1dc0af32d03ad3e27d9c")
+sha512sums=("6781f1b9f569a60b4e4ba157bef8173868d3f9064b358931232dec9c91e976b5561087e0a1eace9a41db4b914b7b88d035abcad81258781cb50308f5e534f93c"
+            "f0b375707cde39400ce9fd4d5028937a0ac6dbc124bb9664a159c5ab745e8717d01fc70b26e53f9bb54e5232a1e2d0635e38a73ab7f809740ff3f2905deb5b2c")
+
+package() {
+	install -Dm 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -d "$pkgdir/usr/share/$pkgname"
+	cp -r "$srcdir/$pkgname-$pkgver/." "$pkgdir/usr/share/$pkgname"
+	install -D "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -D "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
