@@ -1,11 +1,11 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=mikoshi-keyring
 pkgver=2021.10.20
-pkgrel=1
+pkgrel=2
 pkgdesc="PGP keyring for the maintainers of Mikoshi Project"
 arch=("x86_64")
 license=("MIT")
-groups=("mikoshi-core")
+groups=("mikoshi" "mikoshi-core")
 depends=("pacman")
 makedepends=()
 source=("https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/mikoshi-keyring/mikoshi.gpg"
