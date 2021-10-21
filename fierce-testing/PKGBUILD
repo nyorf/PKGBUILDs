@@ -18,10 +18,10 @@ sha512sums=("6781f1b9f569a60b4e4ba157bef8173868d3f9064b358931232dec9c91e976b5561
             "48f01bda6384394765c28502e3713e4a4a9b75d7c11cd1fc723a18a37a3905e64cd6aeb2759d37ac9d08a95f61e32adca23e132c6e89b845265e20afed1ce798")
 
 package() {
-	install -Dm 755 "$srcdir/$_realname" "$pkgdir/usr/bin/$_realname"
-	install -d "$pkgdir/usr/share/$_realname"
-	cp -r "$srcdir/$_realname-$pkgver/." "$pkgdir/usr/share/$_realname"
-	install -D "$srcdir/$_realname-$pkgver/README.md" "$pkgdir/usr/share/doc/$_realname/README.md"
-	install -D "$srcdir/$_realname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$_realname/LICENSE"
+	install -Dm 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -d "$pkgdir/usr/share/$pkgname"
+	cp -r "$srcdir/$_realname-$pkgver/." "$pkgdir/usr/share/$pkgname"
+	install -D "$srcdir/$_realname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -D "$srcdir/$_realname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
