@@ -1,10 +1,10 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=dnsrecon
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
 arch=("x86_64")
-license=("(L)GPL2")
+license=("GPL2")
 groups=("mikoshi" "mikoshi-information-gathering" "mikoshi-dns-analysis")
 depends=("python" "python-netaddr" "python-dnspython" "python-lxml")
 makedepends=("curl")
