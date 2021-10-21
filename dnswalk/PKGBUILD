@@ -1,0 +1,44 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+# Contributor: Thor77 <thor77 at thor77 dot org>, L0-FF (from AUR)
+pkgname=dnswalk
+pkgver=2.0.2
+pkgrel=1
+pkgdesc="A DNS debugger. It performs zone transfers of specified domains, and checks the database in numerous ways for internal consistency, as well as accuracy."
+url="http://sourceforge.net/projects/dnswalk/"
+license=("GPL")
+groups=("mikoshi" "mikoshi-information-gathering" "mikoshi-dns-analysis")
+arch=("x86_64")
+depends=("perl-net-dns")
+source=("https://sourceforge.net/projects/dnswalk/files/$pkgname/$pkgver/dnswalk-$pkgver.tar.gz/download"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/dnswalk/dnswalk.patch"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/dnswalk/makereports.patch"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/dnswalk/0001-Incorporated-PR-from-vanmelick-to-fix-SOA-and-define.patch")
+md5sums=("62b9302822353fad71d51aefdae1cad1"
+         "e3cde1f934cf4ffc815453640efdad5c"
+         "02778b076ed29d2a46d27e0d2513a8f3"
+         "a98ab734d3e494a7d09774e01bbff75b")
+sha256sums=("b49ea147a00e95e80330534d43f8737c2367ae862050e9a8009a607c49f0ea6b"
+            "57468e00d5beffd89f0982d92195b3e01b977690a4a178a7b45462f9f335db7c"
+            "7e6f82d474872234ae2c7e7fca9328fa7a8bad285f5bff3886a1226258070de9"
+            "563240cb0aca1b81d80fddf7ec51c8f1e05dd7eca2d3baa93f22e4cf93d32366")
+sha512sums=("23e5408149ae65f69dbb6d0ecaf5b10233e2279a502f6e19f0dacde0e270ed4eed0aea72f8c12dd636228e99b0b115a335bb8327a0628ad1f36dae5f5572712c"
+            "4dbef166e4276a26583e46a663c61a351e8cbfa056e9b6046a2dc98b90413dec48ed3b5d44b97ec7c43176ed126c336129759d3b59580dd7d3f59fcb37b441ee"
+            "4459158a49148ed6e3d27148052c70d9d903957b1777c266c30c8879ab2deea22082428020605d0992c2b67fb4b08cfa5a7f01f16f0bfab8a6d500515421c3f7"
+            "ff88edd833c5f6515434a39fcc04473d7a70a15b40f4bd057b474b2c40d5f5f3d470884ddaef8baf0bfa54c0dc14967087354938b786b1951c72957b9a5de884")
+
+prepare() {
+	cd $srcdir
+	patch dnswalk dnswalk.patch
+	patch dnswalk 0001-Incorporated-PR-from-vanmelick-to-fix-SOA-and-define.patch
+	patch makereports makereports.patch
+}
+
+package() {
+	cd $srcdir
+	mkdir -p $pkgdir/usr/bin
+	cp {do-,}dnswalk $pkgdir/usr/bin/
+	mkdir -p $pkgdir/usr/share/doc/dnswalk
+	cp {CHANGES,README,TODO,rfc1912.txt,makereports,sendreports,dnswalk.errors} $pkgdir/usr/share/doc/dnswalk/
+	mkdir -p $pkgdir/usr/man/man1
+	cp dnswalk.1 $pkgdir/usr/man/man1/
+}
