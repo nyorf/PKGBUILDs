@@ -1,0 +1,43 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=perl-string-random
+pkgver=0.32
+pkgrel=2
+pkgdesc="Perl module to generate random strings based on a pattern"
+arch=("x86_64")
+url="https://metacpan.org/pod/String::Random"
+license=("PerlArtistic" "GPL")
+groups=("mikoshi" "mikoshi-pkg-dependencies")
+depends=("perl")
+makedepends=("perl-module-build")
+options=("!emptydirs")
+source=("http://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/String-Random-${pkgver}.tar.gz")
+md5sums=("afc9f6fc5a57ba8098e8a60ae90e0361")
+sha256sums=("9d93c679a34ffa26d3b4fa0837caed1cd2e67d76572818b91e97dea734705246")
+sha512sums=("1dd0e7e45e03e155b7a0d8394fb3a04324f4827fe9431e9697d07c3a0f3941981e0b3de1e9f843a43936e5423146a3e6d4da075da04297525093ceffc3b1e659")
+
+build() {
+	cd "${srcdir}/String-Random-${pkgver}"
+
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+		PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR="${pkgdir}"" \
+		PERL_MB_OPT="--installdirs vendor --destdir "${pkgdir}"" \
+		MODULEBUILDRC=/dev/null
+
+	/usr/bin/perl Build.PL INSTALLDIRS=vendor
+	./Build
+}
+
+check() {
+	cd "${srcdir}/String-Random-${pkgver}"
+
+	./Build test
+}
+
+package() {
+	cd "${srcdir}/String-Random-${pkgver}"
+
+	./Build install
+
+	# remove perllocal.pod and .packlist
+	find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
+}

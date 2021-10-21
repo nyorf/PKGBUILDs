@@ -1,0 +1,36 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+pkgname=perl-net-netmask
+_cpanname=Net-Netmask
+_module=Net::Netmask
+pkgver=2.0001
+pkgrel=2
+pkgdesc="Parse, manipulate and lookup IP network blocks."
+arch=('x86_64')
+url="https://metacpan.org/release/$_cpanname"
+license=("PerlArtistic" "GPL")
+groups=("mikoshi" "mikoshi-pkg-dependencies")
+depends=('perl')
+makedepends=("perl-test-useallmodules" "perl-test2-suite") # 1st is from AUR
+options=('!emptydirs')
+source=("http://cpan.metacpan.org/authors/id/J/JM/JMASLAK/${_cpanname}-${pkgver}.tar.gz")
+md5sums=("4185706d6eb978e59b1ab9e89d1865aa")
+sha256sums=("17356ef8667fb38c4410a1c3cc7fa4c73567dbf5674bf97f51236d6e488f5171")
+sha512sums=("87f4f875dc1f07968a71d558bb02b8443d63601e8414a109ddfdd47c5d8616ed0678ea950426ec646bf3b06035ff1dabf067dafb18cb66291b882b9364c0de0b")
+
+
+build() {
+  cd $_cpanname-$pkgver
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+check() {
+  cd $_cpanname-$pkgver
+  make test
+}
+
+package() {
+  cd $_cpanname-$pkgver
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" \( -name '.packlist' -o -name '*.pod' \) -delete
+}
