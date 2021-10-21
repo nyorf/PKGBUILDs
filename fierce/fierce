@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /usr/share/fierce
-exec python3 fierce/fierce.py "$@"
+exec python3 /usr/share/fierce/fierce/fierce.py "$@"

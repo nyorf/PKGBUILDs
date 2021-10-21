@@ -1,0 +1,43 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+_gemname=async-http
+pkgname=ruby-${_gemname}
+pkgver=0.56.5
+pkgrel=1
+pkgdesc='An asynchronous client and server implementation of HTTP/1.0, HTTP/1.1 and HTTP/2 including TLS. Support for streaming requests and responses.'
+url='https://github.com/socketry/async-http'
+arch=('x86_64')
+license=('MIT')
+groups=("mikoshi" "mikoshi-pkg-dependencies")
+depends=('ruby' 'ruby-nio4r' 'ruby-timers' 'ruby-async' 'ruby-async-io')
+optdepends=('ruby-falcon: provides a rack-compatible server')
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://github.com/socketry/async-http/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('e8b4fe28a279fd8dff63e8fde32f82aa')
+sha256sums=('1f43c3a8fcaa93a59b8f2f21256942c94bd501d0caeccfadd3ae0a336864f2ba')
+sha512sums=('890bfeb76a59e07a36882462537861b4829f1029d60de0c06a65f296bd8c23a1f2471f5072253edb7d3ca865993145a86f06bab6438d7d801e8d0afd27e5a566')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  sed 's|git ls-files|find|' -i ${_gemname}.gemspec
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build ${_gemname}.gemspec
+}
+
+package() {
+  cd ${_gemname}-${pkgver}
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${pkgdir}/${_gemdir}"
+  rm -rf cache gems/${_gemname}-${pkgver}/{ext,lib/*/*.so} \
+    extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
+}

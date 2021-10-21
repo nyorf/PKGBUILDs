@@ -1,0 +1,42 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+_gemname=falcon
+pkgname=ruby-${_gemname}
+pkgver=0.39.2
+pkgrel=1
+pkgdesc='a multi-process, multi-fiber rack-compatible HTTP server.'
+url='https://github.com/socketry/falcon'
+arch=('x86_64')
+license=('MIT')
+groups=("mikoshi" "mikoshi-pkg-dependencies")
+depends=('ruby' 'ruby-nio4r' 'ruby-timers' 'ruby-async' 'ruby-async-io' 'ruby-async-http')
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://github.com/socketry/falcon/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('a0a870ee7e9c57df58de165d5dbdb2f8')
+sha256sums=('e8bfd7be72711a697f0105b59f07cef2082253ab45173b7c40e320528623ffc0')
+sha512sums=('b59b2e1608ac5da2be314812e36d670ad521b00a5fc1d84c7b15a4ae14aecc3a717de34e98f1c8d888ae0461def6026d520dad04842e63d2b1fb904aa2d09379')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  sed 's|git ls-files|find|' -i ${_gemname}.gemspec
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build ${_gemname}.gemspec
+}
+
+package() {
+  cd ${_gemname}-${pkgver}
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${pkgdir}/${_gemdir}"
+  rm -rf cache gems/${_gemname}-${pkgver}/{ext,lib/*/*.so} \
+    extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
+}

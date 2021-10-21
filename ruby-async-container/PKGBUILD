@@ -1,0 +1,42 @@
+# Maintainer: Dmitry Dolgov <me@nyorf.com>
+_gemname=async-container
+pkgname=ruby-${_gemname}
+pkgver=0.16.12
+pkgrel=1
+pkgdesc='provides containers which implement parallelism for clients and servers.'
+url='https://github.com/socketry/async-container'
+arch=('x86_64')
+license=('MIT')
+groups=("mikoshi" "mikoshi-pkg-dependencies")
+depends=('ruby' 'ruby-nio4r' 'ruby-timers')
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://github.com/socketry/async-container/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('7ad0d59c8e18487f61970b0e33cb33f0')
+sha256sums=('dc298856d04c5d91f0a8dcba36f437062af4c3e721f997a8b726d537fb0b4bd0')
+sha512sums=('d71bdd1dc22a7ebecd4fed7e17b28c9ae1c875e111db4fb9cddda3508113e3cb7fc72b820c447cac27f047606d20f62180b203e58164da18dc47cff385262441')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  sed 's|git ls-files|find|' -i ${_gemname}.gemspec
+  sed 's|~>|>=|g' -i ${_gemname}.gemspec
+}
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build ${_gemname}.gemspec
+}
+
+package() {
+  cd ${_gemname}-${pkgver}
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${pkgdir}/${_gemdir}"
+  rm -rf cache gems/${_gemname}-${pkgver}/{ext,lib/*/*.so} \
+    extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
+}

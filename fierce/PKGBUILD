@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=fierce
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A semi-lightweight scanner that helps locate non-contiguous IP space and hostnames against specified domains."
 arch=("x86_64")
 license=("GPL3")
@@ -10,11 +10,11 @@ depends=("python" "python-dnspython")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mschwager/fierce/archive/refs/tags/$pkgver.tar.gz"
         "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname")
 md5sums=("669efd68853d30185fc469c173d7bc03"
-         "3e25ff08a624c531b44ae44ad501eb3e")
+         "5e62ca6497bb2a51d4076b275ae6aa8b")
 sha256sums=("6ff85428e06aa71fb4b52de4eef3cf1b6ebcb0f43cf1fcf0150f5e8dcb67b9d1"
-            "a187796e07b58eda4387d3eefd0e6c6b284eb9728836b1db00471f067c7a2bc4")
+            "73e368ac5809568078e9941c0ecbec077d39b344afcc67390f5c49cdf5587fb5")
 sha512sums=("6781f1b9f569a60b4e4ba157bef8173868d3f9064b358931232dec9c91e976b5561087e0a1eace9a41db4b914b7b88d035abcad81258781cb50308f5e534f93c"
-            "cc596720ec4c3a44f26f9dacf654a02ba67cbd22e9889faa38d3babc6bc3fc38f2420d42ed93d537513b95814a81a44f3857bfc0d636f29a9672768187e1134a")
+            "48f01bda6384394765c28502e3713e4a4a9b75d7c11cd1fc723a18a37a3905e64cd6aeb2759d37ac9d08a95f61e32adca23e132c6e89b845265e20afed1ce798")
 
 package() {
 	install -Dm 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
