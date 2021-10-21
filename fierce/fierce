@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/fierce
+exec python3 firece/fierce.py "$@"
