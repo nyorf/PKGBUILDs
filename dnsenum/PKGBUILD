@@ -9,8 +9,8 @@ license=("GPL")
 groups=("mikoshi" "mikoshi-information-gathering" "mikoshi-dns-analysis")
 depends=("perl" "perl-net-dns" "perl-net-ip" "perl-net-netmask" "perl-xml-writer" "perl-net-whois-ip" "perl-www-mechanize")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fwaeytens/$pkgname/archive/$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname")
-        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/smartmatch-experimental.patch"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname"
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/smartmatch-experimental.patch")
 md5sums=("03d5961337ef5f4a47aca6d35f345caa"
          "0fc3defa455c30c83253f294a8bd674e"
          "0b560ca6c812e0b73149873b4c43fefa")
@@ -22,8 +22,8 @@ sha512sums=("c4ff6c6b6d6be0f60a3c784c259a51d51b6e0b72d1528efb8ed5ad038fd859d5884
             "ea535ceb1b5e59fba90b2ecd59ad45494580f0f89fbc024ae6af250548cc87f228a51b882869268e6f057d91d92df843f2c0b0558908090e0c04241f7c1d0419")
 
 prepare() {
-    cd $srcdir
-    patch dnsenum.pl smartmatch-experimental.patch
+    cd $pkgname-$pkgver
+    patch dnsenum.pl "$srcdir/smartmatch-experimental.patch"
 }
 
 package() {
