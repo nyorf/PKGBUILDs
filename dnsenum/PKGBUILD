@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=dnsenum
 pkgver=1.2.4.2
-pkgrel=6
+pkgrel=7
 pkgdesc="multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks"
 url="https://github.com/fwaeytens/dnsenum"
 arch=("x86_64")
@@ -10,12 +10,21 @@ groups=("mikoshi" "mikoshi-information-gathering" "mikoshi-dns-analysis")
 depends=("perl" "perl-net-dns" "perl-net-ip" "perl-net-netmask" "perl-xml-writer" "perl-net-whois-ip" "perl-www-mechanize")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fwaeytens/$pkgname/archive/$pkgver.tar.gz"
         "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname")
+        "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/smartmatch-experimental.patch"
 md5sums=("03d5961337ef5f4a47aca6d35f345caa"
-         "0fc3defa455c30c83253f294a8bd674e")
+         "0fc3defa455c30c83253f294a8bd674e"
+         "0b560ca6c812e0b73149873b4c43fefa")
 sha256sums=("e8a18035a6e00b81430edb4a969ef5043ef39984f3a6b0629b83c8fecf9bf007"
-            "1edb6962cfcf1233b1394d9ce75ed9addd6589c2452fb22f2f52ceb22752960c")
+            "1edb6962cfcf1233b1394d9ce75ed9addd6589c2452fb22f2f52ceb22752960c"
+            "1f4664341eaa1617c65f031043be95d0f4b6056a761f98544eae4e6697fbb81e")
 sha512sums=("c4ff6c6b6d6be0f60a3c784c259a51d51b6e0b72d1528efb8ed5ad038fd859d5884d13adb272b066f7b381a49b68ec6b507a9a94c2ca5061829051ff3adbc93b"
-            "c30ff688f2ea4ebdbb752f351a0ab8101e65ddcf82979e94bbd70350c6da481d7a4ca262253d561b789b6aa569f1c38956e96a84ac1282ed8bf02236f9d91c4d")
+            "c30ff688f2ea4ebdbb752f351a0ab8101e65ddcf82979e94bbd70350c6da481d7a4ca262253d561b789b6aa569f1c38956e96a84ac1282ed8bf02236f9d91c4d"
+            "ea535ceb1b5e59fba90b2ecd59ad45494580f0f89fbc024ae6af250548cc87f228a51b882869268e6f057d91d92df843f2c0b0558908090e0c04241f7c1d0419")
+
+prepare() {
+    cd $srcdir
+    patch dnsenum.pl smartmatch-experimental.patch
+}
 
 package() {
     install -Dm 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"

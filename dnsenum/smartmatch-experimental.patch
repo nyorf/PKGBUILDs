@@ -1,0 +1,10 @@
+--- dnsenum_orig.pl	2021-10-22 20:38:16.313052364 +0700
++++ dnsenum.pl	2021-10-22 20:36:48.983180611 +0700
+@@ -58,6 +58,7 @@
+ use XML::Writer;
+ use Socket;
+ use String::Random;
++use experimental 'smartmatch';
+ 
+ my ($ithreads_support, $whois_support, $mech_support, $html_support,$xml_support);
+ 
