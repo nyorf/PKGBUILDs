@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=dnsrecon
 pkgver=0.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
 arch=("x86_64")
 license=("GPL2")

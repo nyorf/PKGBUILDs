@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=perl-string-random
 pkgver=0.32
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl module to generate random strings based on a pattern"
 arch=("x86_64")
 url="https://metacpan.org/pod/String::Random"

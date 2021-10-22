@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=dnsmap
 pkgver=0.36
-pkgrel=2
+pkgrel=3
 pkgdesc='Passive DNS network mapper'
 url='https://github.com/resurrecting-open-source-projects/dnsmap'
 arch=('x86_64')

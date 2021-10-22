@@ -2,7 +2,7 @@
 _gemname=async-http
 pkgname=ruby-${_gemname}
 pkgver=0.56.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An asynchronous client and server implementation of HTTP/1.0, HTTP/1.1 and HTTP/2 including TLS. Support for streaming requests and responses.'
 url='https://github.com/socketry/async-http'
 arch=('x86_64')

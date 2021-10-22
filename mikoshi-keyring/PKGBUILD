@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=mikoshi-keyring
 pkgver=2021.10.20
-pkgrel=2
+pkgrel=3
 pkgdesc="PGP keyring for the maintainers of Mikoshi Project"
 arch=("x86_64")
 license=("MIT")

@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=fierce
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A semi-lightweight scanner that helps locate non-contiguous IP space and hostnames against specified domains."
 arch=("x86_64")
 license=("GPL3")
