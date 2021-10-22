@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=urlcrazy
 pkgver=0.7.3
-pkgrel=8
+pkgrel=9
 pkgdesc="an OSINT tool to generate and test domain typos or variations to detect or perform typo squatting, URL hijacking, phishing, and corporate espionage."
 arch=("x86_64")
 url="https://github.com/urbanadventurer/urlcrazy"
@@ -11,11 +11,11 @@ depends=("rubygems" "ruby-reline" "ruby-irb" "ruby" "ruby-bundler")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/urbanadventurer/$pkgname/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/nyorf/PKGBUILDs/master/$pkgname/$pkgname")
 md5sums=("70399a7f2746db5f47153ca373ef738c"
-         "34970809247dc26fdbc9f25e4459a224")
+         "8daf5e9b80f6115df863bf9ea0a626c4")
 sha256sums=("b04745000e2c27fd85f7b6af98bdac81b7d1685da87267fc47adea0735a42b95"
-            "a8d4fdd52ec8850147ddba8fd843db2427f0e1eb5ae146ace0e8c794100c62f8")
+            "3c0d24991383be6602ce9abd8121e1b6da7e61d3ca743d2d46d2c26047cb28f4")
 sha512sums=("61a6a3785869130f2940e52dba606616c0592be69f0e25fd3eb6bce070e5ea2c25c97dcdc11b06d1b546a95a20e784bd5a3f9e65f179ec4a505380c06908de5b"
-            "5959258403d0e33d28cd0dbc78ff8b18045c2f7bc76acb2ed13214290883ffeb486300c69817aedf9dfdf09409c27a0cd4bf5f1773975035a1da4e460b52424a")
+            "e9238123b8d9b67f1469893c7e2b51c498c56fd86b24aad9e1e840b6c81fb8d4684ec97073bb1e9f1b83317775ccbaded010801c00e08008511e474a80187fb0")
 
 package() {
     cd "$pkgname-$pkgver"

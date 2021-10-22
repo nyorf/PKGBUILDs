@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /usr/share/urlcrazy
-bundle exec urlcrazy "$@"
+BUNDLE_GEMFILE=/usr/share/urlcrazy/Gemfile bundle exec /usr/share/urlcrazy/urlcrazy "$@"
