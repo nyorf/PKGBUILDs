@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /usr/share/dnsenum
-./dnsenum.pl "$@"
+/usr/share/dnsenum/dnsenum.pl "$@"
