@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Dolgov <me@nyorf.com>
 pkgname=mikoshi-keyring
 pkgver=2021.10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="PGP keyring for the maintainers of Mikoshi Project"
 arch=("x86_64")
 license=("MIT")
@@ -17,17 +17,17 @@ md5sums=("c6ebb382abe16be73de4ea030ef753b8"
          "e703a200c0a712afcd409857f438ab75"
          "6509c0ffdced89beadd6de9c988cca3f"
          "3dfb80bd29ffcb63f8669c2c6da62230"
-         "0eccfed88d2d51fe131ca4afe3d7008a")
+         "25d9ffca1854dd2056e69e58ea7b766c")
 sha256sums=("a2953d997c151073a30ce27d58741c7808b2a9c3886347d45a0fc2d7be5a107f"
             "ef752cb2971867bfc52bc1b8fd454a965f76bbd1aa193bc86ef7b4c7e3e91594"
             "3085b055ae01781ae4a5f08aec1953d8d95dd50de75ee1cfc6711d5eebe70e8e"
             "473b06f810bbd38dc689fd0565295aff46e5c085a208586016b9db9b08088cab"
-            "b9951ff31ed63f34d2e2fe01fef8baec048314692cd81aa2901909fcfa6f4cf1")
+            "4d61d6b1f3106ebcdb38a6270b2042872dd3702c168ccb985e0d4bd8a9e2165b")
 sha512sums=("5509217b0c7784e065c2799f2bdbc8dc6a5cb480ec624499c5dc73b1250a8389f9b767c0ac5e3a3c62577163e3ab1b6f5d378e0e50eb7c818e36c7322d0f0472"
             "1c75b1a3b3f3aa601289b8223d420a28bedb397c56a71da37987bcf81982ae08af39943ef0e8acb1ebcac76ddb57548a08a77756366098c58181c23be3494ea7"
             "a8225f1aa1cbf3b1126c6c4f92282fb88a5a6d32299f186e7e1988725cdab66467751037c4269a58d4ecbd67c12f7255272c4b9cbba19ce8afc6a08753c151e1"
             "5a02a510c3778c5b0e1d5ba009ee1039eb20efc1366584963613faf3f319c154652aeb67651884cd73008544065209166d366d3d733a9d58bf7a32296f59715e"
-            "77bc6cc82812f1069bbefa5150fc722d3c864338448f9aadd1f7a01b0ed88ff362555c786916c02ad6ab62ce00055bc5dda38f7e2eebb7dca13ef78e8e9ed556")
+            "601db4445294948ca1dc3229d9fdbbb5e35575bb1872a4fa77c0b5ee18f3149dbfb4c0946aa26001daf9d816f2573c303d4dc080f82785ac82a571d95bf12c34")
 
 package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
